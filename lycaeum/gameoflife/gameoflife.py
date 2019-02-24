@@ -1,8 +1,12 @@
 import numpy as np
 
-def alive(cell,theboard):
-    if cell == 1:
-        return True
+def alive(theboard, row, col):
+    for row in range(len(theboard)):
+        for col in range(len(theboard[0])):
+            if theboard[row][col] == 1:
+                return True
+            else:
+                return False
 
 
 def neibhors(theboard,n=3):
@@ -19,7 +23,7 @@ def neibhors(theboard,n=3):
                     result = (theboard[i-1][j], theboard[i][j], theboard[i][j+1]).count(1)
                     neibhors_count[i-1][j+1] = result
                     continue
-                if j < n:
+                if j == 1:
                     result = (theboard[i-1][j-1], theboard[i][j-1], theboard[i][j], theboard[i][j+1], theboard[i-1][j+1]).count(1)
                     neibhors_count[i-1][j] = result
                     continue
@@ -77,7 +81,7 @@ def display(theboard):
 
 
 def main():
-    theboard = [[1,0,0], [0,1,0], [0,0,1]]
+    theboard = np.random.randint(2,size=(3, 3))
     print(theboard)
     print(neibhors(theboard))
     display(theboard)
