@@ -1,15 +1,15 @@
 import numpy as np
 
-def alive(theboard, row, col):
-    for row in range(len(theboard)):
-        for col in range(len(theboard[0])):
-            if theboard[row][col] == 1:
+def alive(theboard):
+    for i in range(len(theboard)):
+        for j in range(len(theboard[0])):
+            if theboard[i][j] == 1:
                 return True
             else:
                 return False
 
 
-def neibhors(theboard,n=3):
+def neibhors(theboard, n=3):
     neibhors_count = np.zeros(n*n,dtype=int).reshape(n,n)
     for i in range(len(theboard)):
         for j in range(len(theboard[0])):
@@ -37,7 +37,7 @@ def neibhors(theboard,n=3):
                     result = (theboard[i-1][j+1], theboard[i-1][j], theboard[i][j], theboard[i+1][j], theboard[i+1][j+1]).count(1)
                     neibhors_count[i][j+1] = result
                     continue
-                else:
+                if j == 1:
                     result = (theboard[i-1][j-1], theboard[i-1][j], theboard[i-1][j+1], theboard[i][j-1], theboard[i][j+1], theboard[i][j-1],theboard[i+1][j], theboard[i+1][j+1]).count(1)
                     neibhors_count[i][j] = result
                     continue
@@ -51,41 +51,41 @@ def neibhors(theboard,n=3):
                     result = (theboard[i][j+1], theboard[i][j], theboard[i+1][j]).count(1)
                     neibhors_count[i+1][j+1] = result
                     continue
-                else:
+                if j ==1:
                     result = (theboard[i+1][j-1], theboard[i][j-1], theboard[i][j], theboard[i][j+1], theboard[i+1][j+1]).count(1)
                     neibhors_count[i+1][j+1] = result
                     continue
-        return neibhors_count
+    return neibhors_count
 
-def rules(theboard, neibhors_count, cell):
-    for i in range(len(neibhors_count)):
-        for j in range(len(neibhors_count[0])):
-            if neibhors_count[i][j] < 2:
-                theboard[i][j] = 0
-
-            if neibhors_count[i][j] in range(2,4):
-                theboard[i][j] = 1
-
-            if neibhors_count[i][j] > 3:
-                theboard[i][j] = 0
-
-            if neibhors_count[i][j] == 3:
-                theboard[i][j] = 1
+def rules(theboard, neibhors):
+    for i in range(len(theboard)):
+        for j in range(len(theboard[0])):
+            if alive(theboard[i][j]):
+                if neibhors[i][j] < 2:
+                    theboard[i][j] = 0
+                if neibhors[i][j] in range(2,4):
+                    theboard[i][j] = 1
+                if neibhors[i][j] > 3:
+                    theboard[i][j] = 0
+            else:
+                if neibhors[i][j] == 3:
+                    theboard[i][j] = 1
 
 def display(theboard):
-    if theboard[i][j] == 1:
-        print('o',end='')
-    else:
-        print('.',end='')
+    for row in range(len(theboard)):
+        for col in range(len(theboard[0])):
+            if alive(theboard, row, col) == 1:
+                print(" 1 ", end=' ')
+            else:
+                print(" 0 ", end=' ')        
 
 
 
 def main():
     theboard = np.random.randint(2,size=(3, 3))
-    print(theboard)
-    print(neibhors(theboard))
     display(theboard)
-    rules(theboard, neibhors_count, cell)
+    a = rules(theboard, neibhors(theboard))
+    return a
 
 
 if __name__ == '__main__':
