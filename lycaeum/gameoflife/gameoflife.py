@@ -1,6 +1,6 @@
 import numpy as np
 
-def alive(theboard, i, j):
+def alive(theboard):
     for row in range(len(theboard)):
         for col in range(len(theboard[0])):
             if theboard[row][col] == 1:
