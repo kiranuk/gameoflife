@@ -1,9 +1,9 @@
 import numpy as np
 
-def alive(theboard):
-    for i in range(len(theboard)):
-        for j in range(len(theboard[0])):
-            if theboard[i][j] == 1:
+def alive(theboard, i, j):
+    for row in range(len(theboard)):
+        for col in range(len(theboard[0])):
+            if theboard[row][col] == 1:
                 return True
             else:
                 return False
