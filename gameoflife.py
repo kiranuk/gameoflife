@@ -8,53 +8,54 @@ def alive(cell):
 
 
 def neibhors(theboard):
+    n = len(theboard)
     neibhors_count = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     for i in range(len(theboard)):
         for j in range(len(theboard[0])):
             
             if i == 0:
                 if j == 0:
-                    result = (theboard[i-1][j], theboard[i][j-1], theboard[i][j]).count(1)
-                    neibhors_count[i-1][j-1] = result
+                    result = (theboard[0][1], theboard[1][0], theboard[1][1]).count(1)
+                    neibhors_count[0][0] = result
                     continue
                 if j == 1:
-                    result = (theboard[i-1][j-1], theboard[i][j-1], theboard[i][j], theboard[i][j+1], theboard[i-1][j+1]).count(1)
-                    neibhors_count[i-1][j] = result
+                    result = (theboard[0][0], theboard[1][0], theboard[1][1], theboard[1][2], theboard[0][2]).count(1)
+                    neibhors_count[0][1] = result
                     continue
                 if j == 2:
-                    result = (theboard[i-1][j], theboard[i][j], theboard[i][j+1]).count(1)
-                    neibhors_count[i-1][j+1] = result
+                    result = (theboard[0][1], theboard[1][1], theboard[1][2]).count(1)
+                    neibhors_count[0][2] = result
                     continue
 
 
             
             if i == 1:
                 if j == 0:
-                    result = (theboard[i-1][j-1], theboard[i-1][j], theboard[i][j], theboard[i+1][j], theboard[i+1][j-1]).count(1)
-                    neibhors_count[i][j-1] = result
+                    result = (theboard[0][0], theboard[0][1], theboard[1][1], theboard[2][1], theboard[2][0]).count(1)
+                    neibhors_count[1][0] = result
                     continue
                 if j == 1:
-                    result = (theboard[i-1][j-1], theboard[i-1][j], theboard[i-1][j+1], theboard[i][j-1], theboard[i][j+1], theboard[i+1][j-1],theboard[i+1][j], theboard[i+1][j+1]).count(1)
-                    neibhors_count[i][j] = result
+                    result = (theboard[0][0], theboard[0][1], theboard[0][2], theboard[1][0], theboard[1][2], theboard[2][0],theboard[2][1], theboard[2][2]).count(1)
+                    neibhors_count[1][1] = result
                     continue
                 if j == 2:
-                    result = (theboard[i-1][j+1], theboard[i-1][j], theboard[i][j], theboard[i+1][j], theboard[i+1][j+1]).count(1)
-                    neibhors_count[i][j+1] = result
+                    result = (theboard[0][2], theboard[0][1], theboard[1][1], theboard[2][1], theboard[2][2]).count(1)
+                    neibhors_count[1][2] = result
                     continue
 
             
             if i == 2:
                 if j == 0:
-                    result = (theboard[i][j-1], theboard[i][j], theboard[i+1][j]).count(1)
-                    neibhors_count[i+1][j-1] = result
+                    result = (theboard[1][0], theboard[1][1], theboard[2][1]).count(1)
+                    neibhors_count[2][0] = result
                     continue
-                if j ==2:
-                    result = (theboard[i][j+1], theboard[i][j], theboard[i+1][j]).count(1)
-                    neibhors_count[i+1][j+1] = result
+                if j == 2:
+                    result = (theboard[1][2], theboard[1][1], theboard[2][1]).count(1)
+                    neibhors_count[2][2] = result
                     continue
                 if j ==1:
-                    result = (theboard[i+1][j-1], theboard[i][j-1], theboard[i][j], theboard[i][j+1], theboard[i+1][j+1]).count(1)
-                    neibhors_count[i+1][j+1] = result
+                    result = (theboard[2][0], theboard[1][0], theboard[1][1], theboard[1][2], theboard[2][2]).count(1)
+                    neibhors_count[2][1] = result
                     continue
     return neibhors_count
 
