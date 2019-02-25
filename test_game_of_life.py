@@ -7,8 +7,13 @@ def test_alive():
     result = [[True,False,False],
               [False,True,False],
               [False,False,True]]
-    assert (gameoflife.alive(theboard) == result)
-    
+    assert (gameoflife.alive(theboard[0][0]) == result[0][0])
+    assert (gameoflife.alive(theboard[1][0]) == result[1][0])
+    assert (gameoflife.alive(theboard[2][0]) == result[2][0])
+    assert (gameoflife.alive(theboard[1][1]) == result[1][1])
+    assert (gameoflife.alive(theboard[2][1]) == result[2][1])
+
+
 
 def test_neibhors():
     theboard = [[1, 0, 0],

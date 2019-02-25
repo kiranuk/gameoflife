@@ -17,28 +17,31 @@ def neibhors(theboard):
                     result = (theboard[i-1][j], theboard[i][j-1], theboard[i][j]).count(1)
                     neibhors_count[i-1][j-1] = result
                     continue
-                if j == 2:
-                    result = (theboard[i-1][j], theboard[i][j], theboard[i][j+1]).count(1)
-                    neibhors_count[i-1][j+1] = result
-                    continue
                 if j == 1:
                     result = (theboard[i-1][j-1], theboard[i][j-1], theboard[i][j], theboard[i][j+1], theboard[i-1][j+1]).count(1)
                     neibhors_count[i-1][j] = result
                     continue
+                if j == 2:
+                    result = (theboard[i-1][j], theboard[i][j], theboard[i][j+1]).count(1)
+                    neibhors_count[i-1][j+1] = result
+                    continue
+
+
             
             if i == 1:
                 if j == 0:
                     result = (theboard[i-1][j-1], theboard[i-1][j], theboard[i][j], theboard[i+1][j], theboard[i+1][j-1]).count(1)
                     neibhors_count[i][j-1] = result
                     continue
-                if j == 2:
-                    result = (theboard[i-1][j+1], theboard[i-1][j], theboard[i][j], theboard[i+1][j], theboard[i+1][j+1]).count(1)
-                    neibhors_count[i][j+1] = result
-                    continue
                 if j == 1:
                     result = (theboard[i-1][j-1], theboard[i-1][j], theboard[i-1][j+1], theboard[i][j-1], theboard[i][j+1], theboard[i+1][j-1],theboard[i+1][j], theboard[i+1][j+1]).count(1)
                     neibhors_count[i][j] = result
                     continue
+                if j == 2:
+                    result = (theboard[i-1][j+1], theboard[i-1][j], theboard[i][j], theboard[i+1][j], theboard[i+1][j+1]).count(1)
+                    neibhors_count[i][j+1] = result
+                    continue
+
             
             if i == 2:
                 if j == 0:
