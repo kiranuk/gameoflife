@@ -59,37 +59,42 @@ def neibhors(theboard):
                     continue
     return neibhors_count
 
-def rules(theboard, neibhors):
-    for i in range(len(theboard)):
-        for j in range(len(theboard[0])):
-            if alive(theboard[i][j]):
+def rules(theboard,neibhors):
+    for i in range(len(neibhors)):
+        for j in range(len(neibhors[0])):
+            
+            if alive(neibhors[i][j]):
+                
                 if neibhors[i][j] < 2:
                     theboard[i][j] = 0
+                
                 if neibhors[i][j] in range(2,4):
                     theboard[i][j] = 1
+                
                 if neibhors[i][j] > 3:
                     theboard[i][j] = 0
-            else:
+                
                 if neibhors[i][j] == 3:
                     theboard[i][j] = 1
 
 def display(theboard):
+    s = " "
     for i in range(len(theboard)):
-        for j in range(len(theboard[0])):
+        for j in range(len(theboard)):
             if alive(theboard[i][j]) == 1:
-                print(" o ")
+                b = s + " o "
             else:
-                print(" . ")        
+                b = s + " . "
+    return b
 
 
 
 def main():
     theboard = [[1,0,0],[0,1,0],[0,0,1]]
-    #display(theboard)
-    #a = rules(theboard, neibhors(theboard))
-    #return a
-    print(theboard)
-    print(neibhors(theboard))
+    a = rules(theboard, neibhors(theboard))
+    return a
+    display(theboard)
+    
 
 
 if __name__ == '__main__':
