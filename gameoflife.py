@@ -1,4 +1,4 @@
-import numpy as np
+
 
 def alive(cell):
     if cell == 1:
@@ -8,7 +8,7 @@ def alive(cell):
 
 
 def neibhors(theboard):
-    neibhors_count = [[0,0,0],[0,0,0],[0,0,0]]
+    neibhors_count = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     for i in range(len(theboard)):
         for j in range(len(theboard[0])):
             
@@ -40,7 +40,7 @@ def neibhors(theboard):
                     neibhors_count[i][j] = result
                     continue
             
-            if i == n:
+            if i == 2:
                 if j == 0:
                     result = (theboard[i][j-1], theboard[i][j], theboard[i+1][j]).count(1)
                     neibhors_count[i+1][j-1] = result
@@ -81,9 +81,11 @@ def display(theboard):
 
 def main():
     theboard = [[1,0,0],[0,1,0],[0,0,1]]
-    display(theboard)
-    a = rules(theboard, neibhors(theboard))
-    return a
+    #display(theboard)
+    #a = rules(theboard, neibhors(theboard))
+    #return a
+    print(theboard)
+    print(neibhors(theboard))
 
 
 if __name__ == '__main__':
