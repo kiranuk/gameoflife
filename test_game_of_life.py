@@ -25,8 +25,8 @@ def test_neibhors():
     assert (gameoflife.neibhors(theboard) == result)
 
 def test_rules():
-    theboard = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-    neibhors = [[1, 2, 1], [2, 2, 2], [1, 2, 1]]
-    result = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+    theboard = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
+    neibhors = [[2, 3, 2], [1, 2, 1], [2, 3, 2]]
+    result = [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
     assert (gameoflife.rules(theboard,neibhors) == result) 
 

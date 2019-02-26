@@ -1,4 +1,4 @@
-
+import time
 
 def alive(cell):
     return cell == 1
@@ -61,15 +61,12 @@ def rules(theboard, neibhors):
     rows = len(neibhors)
     cols = len(neibhors[0])
     for i in range(rows):
-        for j in range(cols):
-            if neibhors[i][j] < 2:
+        for j in range(cols):             
+            if neibhors[i][j] not in range(2,4):
                 theboard[i][j] = 0
                 continue
                 
-            if neibhors[i][j] not in (2,4):
-                theboard[i][j] = 0
-                continue
-            else:
+            if neibhors[i][j] == 3:
                 theboard[i][j] = 1
                 continue
     return theboard
@@ -88,19 +85,21 @@ def display(theboard):
 
 
 
-def main():
-    
-    theboard = [[1,0,0], 
-                [0,1,0], 
-                [0,0,1]]
+def main(theboard):
     while True:
         print(display(theboard))
         a = rules(theboard, neibhors(theboard))
-        b = display(a)
-    return b
+        return a
 
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    theboard = [[0,0,0], 
+                [1,1,1], 
+                [0,0,0]]
+
+    for i in range(10):
+        print ("{} generation".format(i))    
+        time.sleep(0.5)
+        main(theboard)
 
