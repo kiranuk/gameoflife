@@ -87,10 +87,11 @@ def display(theboard):
 
 
 def main(theboard):
-    while True:
+    for i in range(10):
+        print ("{} generation".format(i))
+        time.sleep(0.5)
         print(display(theboard))
-        a = rules(theboard, neibhors(theboard))
-        return a
+        rules(theboard, neibhors(theboard))
 
 
 
@@ -98,9 +99,5 @@ if __name__ == "__main__":
     theboard = [[0,0,0], 
                 [1,1,1], 
                 [0,0,0]]
-
-    for i in range(10):
-        print ("{} generation".format(i))    
-        time.sleep(0.5)
-        main(theboard)
-
+    main(theboard)
+    
