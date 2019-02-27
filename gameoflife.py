@@ -6,54 +6,25 @@ def alive(cell):
 
 def neighbours(theboard):
     n = len(theboard)
-    neighbours_count = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-    for i in range(len(theboard)):
-        for j in range(len(theboard[0])):
-            
-            if i == 0:
-                if j == 0:
-                    result = (theboard[0][1], theboard[1][0], theboard[1][1]).count(1)
-                    neighbours_count[0][0] = result
-                    continue
-                if j == 1:
-                    result = (theboard[0][0], theboard[1][0], theboard[1][1], theboard[1][2], theboard[0][2]).count(1)
-                    neighbours_count[0][1] = result
-                    continue
-                if j == 2:
-                    result = (theboard[0][1], theboard[1][1], theboard[1][2]).count(1)
-                    neighbours_count[0][2] = result
-                    continue
-
-
-            
-            if i == 1:
-                if j == 0:
-                    result = (theboard[0][0], theboard[0][1], theboard[1][1], theboard[2][1], theboard[2][0]).count(1)
-                    neighbours_count[1][0] = result
-                    continue
-                if j == 1:
-                    result = (theboard[0][0], theboard[0][1], theboard[0][2], theboard[1][0], theboard[1][2], theboard[2][0],theboard[2][1], theboard[2][2]).count(1)
-                    neighbours_count[1][1] = result
-                    continue
-                if j == 2:
-                    result = (theboard[0][2], theboard[0][1], theboard[1][1], theboard[2][1], theboard[2][2]).count(1)
-                    neighbours_count[1][2] = result
-                    continue
-
-            
-            if i == 2:
-                if j == 0:
-                    result = (theboard[1][0], theboard[1][1], theboard[2][1]).count(1)
-                    neighbours_count[2][0] = result
-                    continue
-                if j == 2:
-                    result = (theboard[1][2], theboard[1][1], theboard[2][1]).count(1)
-                    neighbours_count[2][2] = result
-                    continue
-                if j ==1:
-                    result = (theboard[2][0], theboard[1][0], theboard[1][1], theboard[1][2], theboard[2][2]).count(1)
-                    neighbours_count[2][1] = result
-                    continue
+    neighbours_count = [[0, 0, 0], [0, 0, 0], [0, 0, 0]] # Hardcoding. This will work only for 3x3. It should be written for NxN
+    result = (theboard[0][1], theboard[1][0], theboard[1][1]).count(1)
+    neighbours_count[0][0] = result
+    result = (theboard[0][0], theboard[1][0], theboard[1][1], theboard[1][2], theboard[0][2]).count(1)
+    neighbours_count[0][1] = result
+    result = (theboard[0][1], theboard[1][1], theboard[1][2]).count(1)
+    neighbours_count[0][2] = result
+    result = (theboard[0][0], theboard[0][1], theboard[1][1], theboard[2][1], theboard[2][0]).count(1)
+    neighbours_count[1][0] = result
+    result = (theboard[0][0], theboard[0][1], theboard[0][2], theboard[1][0], theboard[1][2], theboard[2][0],theboard[2][1], theboard[2][2]).count(1)
+    neighbours_count[1][1] = result
+    result = (theboard[0][2], theboard[0][1], theboard[1][1], theboard[2][1], theboard[2][2]).count(1)
+    neighbours_count[1][2] = result
+    result = (theboard[1][0], theboard[1][1], theboard[2][1]).count(1)
+    neighbours_count[2][0] = result
+    result = (theboard[1][2], theboard[1][1], theboard[2][1]).count(1)
+    neighbours_count[2][2] = result
+    result = (theboard[2][0], theboard[1][0], theboard[1][1], theboard[1][2], theboard[2][2]).count(1)
+    neighbours_count[2][1] = result
     return neighbours_count
 
 
