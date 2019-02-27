@@ -73,15 +73,16 @@ def rules(theboard, neibhors):
 
 
 def display(theboard):
-    s = " "
+    rows = []
     for i in range(len(theboard)):
+        cols = []
         for j in range(len(theboard)):
             if alive(theboard[i][j]):
-                s = s + " o "
+                cols.append("o")
             else:
-                s = s + " . "
-        s = s + "\n"
-    return s
+                cols.append(".")
+        rows.append("   ".join(cols))
+    return "\n\n".join(rows)
 
 
 
