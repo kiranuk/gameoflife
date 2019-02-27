@@ -33,7 +33,7 @@ def rules(theboard, neighbours):
     cols = len(neighbours[0])
     for i in range(rows):
         for j in range(cols):             
-            if neighbours[i][j] not in range(2,4):
+            if neighbours[i][j] not in [2,3]:
                 theboard[i][j] = 0
                 continue
                 
