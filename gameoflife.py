@@ -38,10 +38,10 @@ def rules(theboard, neibhors):
 
 def display(theboard):
     size = len(theboard)
-    for i in range(size):
-        for j in range(size): 
+    for i in range(theboard):
+        for j in range(theboard[0]): 
             if alive(theboard[i][j]):
-                print("1", end=' ')
+                print("1",end=' ')
             else:
                 print("o",end=' ')
         print("\n")
