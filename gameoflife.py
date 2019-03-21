@@ -1,10 +1,10 @@
+
 import time
 
 def alive(cell):
     return cell == 1
 
-
-def neibhors(theboard, row, col):
+def neibhours(theboard, row, col):
     size_limit = len(theboard) - 1
     alive_members = 0
     for i in [-1, 0, 1]:
@@ -15,50 +15,56 @@ def neibhors(theboard, row, col):
                 continue
             if next_row < 0 or next_col < 0 or next_row > size_limit or next_col > size_limit:
                 continue
-            if alive(theboard[next_row][next_col]):
+            if theboard[next_row][next_col] == 1:
                 alive_members += 1
-
     return alive_members
 
 
-def rules(theboard, neibhors):
-    rows = len(neibhors)
-    cols = len(neibhors[0])
+def rules(theboard):
+    new_board = [[0,0,0], 
+                 [0,0,0], 
+                 [0,0,0]]
+    rows = len(theboard)
+    cols = len(theboard)
     for row in range(rows):
-        for col in range(cols):             
-            if neibhors[row][col] not in [2,3]:
-                theboard[row][col] = 0
-                continue
-                
-            if neibhors[row][col] == 3:
-                theboard[row][col] = 1
-                continue
-    return theboard
+        for col in range(cols):
+            if neibhours(theboard, row, col) in [2,3] and theboard[row][col] == 1:
+                new_board[row][col] = 1
+            elif neibhours(theboard, row, col) == 3 and theboard[row][col] == 0:
+                new_board[row][col] = 1
+            else:
+                new_board[row][col] = 0
+    return new_board
 
 
 def display(theboard):
     size = len(theboard)
-    for i in range(theboard):
-        for j in range(theboard[0]): 
-            if alive(theboard[i][j]):
-                print("1",end=' ')
+    rows = []
+    for i in range(size):
+        cols = []
+        for j in range(size):
+            if theboard[i][j] == 1:
+                cols.append("o")
             else:
-                print("o",end=' ')
-        print("\n")
-
-
+                cols.append(".")
+        rows.append(" ".join(cols))
+    return "\n\n".join(rows)
+    
 
 def main(theboard):
-    while True:
+    row = len(theboard)
+    col = len(theboard)
+    for i in range(0, 10):
+        print ("{} generation".format(i))
         print(display(theboard))
-        for i in range(10):
-            print ("{} generation".format(i))    
-            rules(theboard, neibhors(theboard, row, col))
+        theboard=rules(theboard)
+        time.sleep(0.5)
+       
 
-
+            
 if __name__ == "__main__":
     theboard = [[0,0,0], 
                 [1,1,1], 
                 [0,0,0]]
+    
     main(theboard)
-
