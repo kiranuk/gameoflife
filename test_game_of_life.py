@@ -15,18 +15,15 @@ def test_alive():
 
 
 
-def test_neibhors():
-    theboard = [[1, 0, 0],
-                [0, 1, 0],
-                [0, 0, 1]]
-    result = [[1, 2, 1],
-              [2, 2, 2],
-              [1, 2, 1]]
-    assert (gameoflife.neibhors(theboard) == result)
+def test_neibhours():
+    theboard = [[0, 0, 0],
+                [1, 1, 1],
+                [0, 0, 0]]
+    result = 0
+    assert (gameoflife.neibhours(theboard, 3, 3) == result)
 
 def test_rules():
     theboard = [[0, 0, 0], [1, 1, 1], [0, 0, 0]]
-    neibhors = [[2, 3, 2], [1, 2, 1], [2, 3, 2]]
     result = [[0, 1, 0], [0, 1, 0], [0, 1, 0]]
-    assert (gameoflife.rules(theboard,neibhors) == result) 
+    assert (gameoflife.rules(theboard) == result) 
 
