@@ -1,8 +1,10 @@
 
 import time
 
+
 def alive(cell):
     return cell == 1
+
 
 def neibhours(theboard, row, col):
     size_limit = len(theboard) - 1
@@ -21,9 +23,9 @@ def neibhours(theboard, row, col):
 
 
 def rules(theboard):
-    new_board = [[0,0,0], 
-                 [0,0,0], 
-                 [0,0,0]]
+    new_board = [[0, 0, 0],
+                 [0, 0, 0],
+                 [0, 0, 0]]
     rows = len(theboard)
     cols = len(theboard)
     for row in range(rows):
@@ -44,27 +46,26 @@ def display(theboard):
         cols = []
         for j in range(size):
             if theboard[i][j] == 1:
-                cols.append("o")
+                cols.append(u"\u25B2")
             else:
-                cols.append(".")
+                cols.append(u"\u25E6")
         rows.append(" ".join(cols))
     return "\n\n".join(rows)
-    
+
 
 def main(theboard):
     row = len(theboard)
     col = len(theboard)
     for i in range(0, 10):
-        print ("{} generation".format(i))
+        print("{} generation".format(i))
         print(display(theboard))
-        theboard=rules(theboard)
+        theboard = rules(theboard)
         time.sleep(0.5)
-       
 
-            
+
 if __name__ == "__main__":
-    theboard = [[0,0,0], 
-                [1,1,1], 
-                [0,0,0]]
-    
+    theboard = [[0, 0, 0],
+                [1, 1, 1],
+                [0, 0, 0]]
+
     main(theboard)
