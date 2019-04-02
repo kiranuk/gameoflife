@@ -26,8 +26,7 @@ def rules(theboard):
     new_board = [[0, 0, 0],
                  [0, 0, 0],
                  [0, 0, 0]]
-    rows = len(theboard)
-    cols = len(theboard)
+    rows = cols = len(theboard)
     for row in range(rows):
         for col in range(cols):
             if neibhours(theboard, row, col) in [2,3] and theboard[row][col] == 1:
