@@ -7,7 +7,7 @@ def alive(cell):
 
 
 def neibhours(theboard, row, col):
-    size_limit = len(theboard) - 1
+    board_size = len(theboard) - 1
     alive_members = 0
     for i in [-1, 0, 1]:
         for j in [-1, 0, 1]:
@@ -15,7 +15,7 @@ def neibhours(theboard, row, col):
             next_col = col + j
             if next_row == row and next_col == col:
                 continue
-            if next_row < 0 or next_col < 0 or next_row > size_limit or next_col > size_limit:
+            if next_row < 0 or next_col < 0 or next_row > board_size or next_col > board_size:
                 continue
             if theboard[next_row][next_col] == 1:
                 alive_members += 1
