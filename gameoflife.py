@@ -6,7 +6,7 @@ def alive(cell):
     return cell == 1
 
 
-def neibhours(theboard, row, col):
+def neighbours(theboard, row, col):
     size_limit = len(theboard) - 1
     alive_members = 0
     for i in [-1, 0, 1]:
@@ -30,9 +30,9 @@ def rules(theboard):
     cols = len(theboard)
     for row in range(rows):
         for col in range(cols):
-            if neibhours(theboard, row, col) in [2,3] and theboard[row][col] == 1:
+            if neighbours(theboard, row, col) in [2,3] and theboard[row][col] == 1:
                 new_board[row][col] = 1
-            elif neibhours(theboard, row, col) == 3 and theboard[row][col] == 0:
+            elif neighbours(theboard, row, col) == 3 and theboard[row][col] == 0:
                 new_board[row][col] = 1
             else:
                 new_board[row][col] = 0
