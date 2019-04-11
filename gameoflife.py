@@ -2,11 +2,13 @@
 import time
 
 
+
 def alive(cell):
     return cell == 1
 
 
 def neighbours(theboard, row, col):
+    "Checking the neighbours, is there any alive members"
     size_limit = len(theboard) - 1
     alive_members = 0
     for i in [-1, 0, 1]:
@@ -23,6 +25,7 @@ def neighbours(theboard, row, col):
 
 
 def rules(theboard):
+    "Rules are applied to neibhours"
     new_board = [[0, 0, 0],
                  [0, 0, 0],
                  [0, 0, 0]]
@@ -30,7 +33,7 @@ def rules(theboard):
     cols = len(theboard)
     for row in range(rows):
         for col in range(cols):
-            if neighbours(theboard, row, col) in [2,3] and theboard[row][col] == 1:
+            if neighbours(theboard, row, col) in [2, 3] and theboard[row][col] == 1:
                 new_board[row][col] = 1
             elif neighbours(theboard, row, col) == 3 and theboard[row][col] == 0:
                 new_board[row][col] = 1
@@ -40,6 +43,7 @@ def rules(theboard):
 
 
 def display(theboard):
+    "Displays the alive and dead cell with unicode symbols"
     size = len(theboard)
     rows = []
     for i in range(size):
@@ -54,8 +58,6 @@ def display(theboard):
 
 
 def main(theboard):
-    row = len(theboard)
-    col = len(theboard)
     for i in range(0, 10):
         print("{} generation".format(i))
         print(display(theboard))
